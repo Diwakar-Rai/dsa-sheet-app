@@ -1,0 +1,88 @@
+# ==========================================
+# Dependencies (Never commit node_modules)
+# ==========================================
+node_modules/
+/node_modules
+**/node_modules/
+jspm_packages/
+web_modules/
+
+# ==========================================
+# Build and Production Outputs
+# ==========================================
+# React build folder (CRA / Vite)
+build/
+dist/
+out/
+.next/
+.nuxt/
+
+# Node/TypeScript compilation output
+bin/
+obj/
+*.tsbuildinfo
+
+# ==========================================
+# Environment Secrets & Credentials
+# ==========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.cert
+**/*.env
+**/*.env.*
+
+# ==========================================
+# Logs and Diagnostics
+# ==========================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# ==========================================
+# Testing & Coverage
+# ==========================================
+coverage/
+.nyc_output/
+.jest/
+
+# ==========================================
+# Tooling, Bundlers, and Caches
+# ==========================================
+.eslintcache
+.stylelintcache
+.cache/
+.parcel-cache/
+.vite/
+.turbo/
+
+# ==========================================
+# System & IDE Specific Files
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors (VS Code, WebStorm, etc.)
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
