@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 
 import TopicAccordion from "../components/TopicAccordion";
 import ProgressCard from "../components/ProgressCard";
+import StatsCard from "../components/StatCard";
 
 const Dashboard = () => {
   const { logout } = useAuth();
@@ -83,6 +84,17 @@ const Dashboard = () => {
           completed={completedProblems.length}
           total={totalProblems}
         />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <StatsCard title="Total Problems" value={totalProblems} />
+
+          <StatsCard title="Completed" value={completedProblems.length} />
+
+          <StatsCard
+            title="Remaining"
+            value={totalProblems - completedProblems.length}
+          />
+        </div>
 
         <div className="space-y-4">
           {topics.map((topic) => (

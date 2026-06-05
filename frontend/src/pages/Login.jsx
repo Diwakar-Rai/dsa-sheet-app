@@ -68,9 +68,9 @@ const Login = () => {
         </form>
 
         <div className="mt-6 text-sm text-gray-500 text-center">
-          Demo Credentials:
-          <br />
-          test@apnacollege.com
+          Demo Credentials
+          <br /> Email: test@apnacollege.com
+          <br /> Password: Password@123
         </div>
       </div>
     </div>
