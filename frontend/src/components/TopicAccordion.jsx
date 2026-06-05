@@ -1,24 +1,26 @@
 import { useState } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+
 import ProblemItem from "./ProblemItem";
 
-const TopicAccordion = ({ topic }) => {
+const TopicAccordion = ({ topic, completedProblems, onToggle }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="bg-white rounded-xl shadow">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex justify-between items-center p-5 font-semibold"
+        className="w-full flex justify-between items-center p-5"
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <ChevronDown
             size={18}
             className={`transition-transform duration-200 ${
               open ? "rotate-180" : ""
             }`}
           />
-          <span>{topic.name}</span>
+
+          <span className="font-semibold">{topic.name}</span>
         </div>
 
         <span className="text-sm text-gray-500">
@@ -27,9 +29,14 @@ const TopicAccordion = ({ topic }) => {
       </button>
 
       {open && (
-        <div className="p-5 border-t space-y-3">
+        <div className="border-t p-5 space-y-3">
           {topic.problems.map((problem) => (
-            <ProblemItem key={problem._id} problem={problem} />
+            <ProblemItem
+              key={problem._id}
+              problem={problem}
+              completedProblems={completedProblems}
+              onToggle={onToggle}
+            />
           ))}
         </div>
       )}
