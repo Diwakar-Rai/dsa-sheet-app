@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useEffect, useState } from "react";
+import api from "../services/api";
+import TopicAccordion from "../components/TopicAccordion";
 
 const Dashboard = () => {
+  const [topics, setTopics] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { logout } = useAuth();
 
   const navigate = useNavigate();
@@ -9,6 +14,22 @@ const Dashboard = () => {
   const handleLogout = () => {
     logout();
     navigate("/login");
+  };
+
+  useEffect(() => {
+    fetchTopics();
+  }, []);
+
+  const fetchTopics = async () => {
+    try {
+      const response = await api.get("/topics");
+
+      setTopics(response.data.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -27,7 +48,15 @@ const Dashboard = () => {
       </header>
 
       <main className="max-w-7xl mx-auto p-6">
-        <div className="bg-white rounded-xl shadow p-6">Dashboard</div>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <div className="space-y-4">
+            {topics.map((topic) => (
+              <TopicAccordion key={topic._id} topic={topic} />
+            ))}
+          </div>
+        )}
       </main>
     </div>
   );
