@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import authRoutes from "./routes/auth.routes.js";
 import topicRoutes from "./routes/topic.routes.js";
+import progressRoutes from "./routes/progress.routes.js";
 
 const app = express();
 
@@ -18,4 +19,6 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 
 app.use("/api/topics", topicRoutes);
+app.use("/api/progress", progressRoutes);
+
 export default app;
